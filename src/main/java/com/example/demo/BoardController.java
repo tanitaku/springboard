@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 
@@ -50,12 +51,13 @@ public class BoardController {
 	}
 	
 	/* 更新処理  */
-	@PostMapping()
+	@PostMapping("/create")
 	@Transactional(readOnly=false)
 	public ModelAndView save(
 			@ModelAttribute("formModel") SpringBoard board) {
+		board.setCreateDate(new Date());
 		repos.saveAndFlush(board);
-		return new ModelAndView("redirect:users/list");
+		return new ModelAndView("redirect:/");
 	}
 	
 	/* 詳細画面への遷移 */
@@ -63,7 +65,7 @@ public class BoardController {
 	ModelAndView show(@RequestParam int id) {
 		ModelAndView mav = new ModelAndView();
 		SpringBoard data = repos.findById(id);
-		mav.addObject("formModel", data);
+		mav.addObject("data", data);
 		mav.setViewName("boards/show");
 		return mav;
 	}
