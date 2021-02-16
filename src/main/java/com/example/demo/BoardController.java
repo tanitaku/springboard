@@ -70,5 +70,17 @@ public class BoardController {
 		return mav;
 	}
 	
+	@PostConstruct
+	public void init() {
+		SpringBoard board1 = new SpringBoard();
+		board1.setCreateUser("島根　花子");
+		board1.setContent("あいうえお");
+		board1.setTitle("あいうえお");
+		Date date = new Date();
+		board1.setCreateDate(date);
+		repos.saveAndFlush(board1);
+	}
+	
+	
 
 }
