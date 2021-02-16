@@ -36,7 +36,11 @@ form {display: inline;}
 		<th class="col_createUser">投稿者</th>
 		<td class="col_data" th:text="${data.createUser}" >
 		</td>	
-	</tr>					
+	</tr>				
+	<tr>
+		<th>分類</th>
+		<td th:text="${div.name}"></td>
+	</tr>		
 </table>
 <hr>
 <form action="/">

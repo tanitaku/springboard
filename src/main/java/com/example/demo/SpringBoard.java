@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,14 +25,19 @@ public class SpringBoard {
 	@Column
 	private Date createDate;
 	
-	@Column
+	@Column(nullable = false)
+	@NotEmpty
 	private String title;
 	
-	@Column
+	@Column(nullable = false)
+	@NotEmpty
 	private String content;
 	
 	@Column
 	private String createUser;
+	
+	@Column
+	private int division;
 	
 
 }
