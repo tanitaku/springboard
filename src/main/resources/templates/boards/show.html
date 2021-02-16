@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table {
+	border-collapse: collapse;
+	}
+.col_createDate {width:200px;}
+.col_title {width:200px;}
+.col_content {width:400px;}
+.col_createUser {width:200px;}
+form {display: inline;}	
+</style>
+</head>
+<body>
+<h1>Spring Board</h1>
+<table border="1">
+    <tr>
+		<th class="col_createDate">作成日</th>
+		<td class="col_data" th:text="${data.createDate}">
+		</td>	
+	</tr>
+	<tr>
+		<th class="col_title">タイトル</th>
+		<td class="col_data" th:text="${data.title}">
+		</td>	
+	</tr>
+	<tr>
+		<th class="col_content">内容</th>
+		<td class="col_data" th:text="${data.content}">
+		</td>
+	</tr>
+	<tr>
+		<th class="col_createUser">投稿者</th>
+		<td class="col_data" th:text="${data.createUser}" >
+		</td>	
+	</tr>					
+</table>
+<hr>
+<form action="/">
+	<input type="submit" value="戻る" />
+</form>
+</body>
+</html>
